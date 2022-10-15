@@ -1,23 +1,24 @@
 package io.darrion.clientmanager.repo;
 
-import io.darrion.clientmanager.table.AdvisorTable;
 import org.springframework.data.repository.CrudRepository;
+
+import io.darrion.clientmanager.entity.AdvisorEntity;
 
 import java.util.Optional;
 
-public class AdvisorRepository implements CrudRepository<AdvisorTable, Integer> {
+public class AdvisorRepository implements CrudRepository<AdvisorEntity, Integer> {
     @Override
-    public <S extends AdvisorTable> S save(S entity) {
+    public <S extends AdvisorEntity> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends AdvisorTable> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends AdvisorEntity> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<AdvisorTable> findById(Integer integer) {
+    public Optional<AdvisorEntity> findById(Integer integer) {
         return Optional.empty();
     }
 
@@ -27,12 +28,12 @@ public class AdvisorRepository implements CrudRepository<AdvisorTable, Integer> 
     }
 
     @Override
-    public Iterable<AdvisorTable> findAll() {
+    public Iterable<AdvisorEntity> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<AdvisorTable> findAllById(Iterable<Integer> integers) {
+    public Iterable<AdvisorEntity> findAllById(Iterable<Integer> integers) {
         return null;
     }
 
@@ -47,7 +48,7 @@ public class AdvisorRepository implements CrudRepository<AdvisorTable, Integer> 
     }
 
     @Override
-    public void delete(AdvisorTable entity) {
+    public void delete(AdvisorEntity entity) {
 
     }
 
@@ -57,7 +58,7 @@ public class AdvisorRepository implements CrudRepository<AdvisorTable, Integer> 
     }
 
     @Override
-    public void deleteAll(Iterable<? extends AdvisorTable> entities) {
+    public void deleteAll(Iterable<? extends AdvisorEntity> entities) {
 
     }
 

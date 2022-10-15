@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClientModel {
+public class User {
     Integer id;
     String firstName;
     String middleName;
