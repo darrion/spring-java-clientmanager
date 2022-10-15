@@ -1,23 +1,24 @@
 package io.darrion.clientmanager.repo;
 
-import io.darrion.clientmanager.table.ClientTable;
 import org.springframework.data.repository.CrudRepository;
+
+import io.darrion.clientmanager.entity.ClientEntity;
 
 import java.util.Optional;
 
-public class ClientRepository implements CrudRepository<ClientTable, Integer> {
+public class ClientRepository implements CrudRepository<ClientEntity, Integer> {
     @Override
-    public <S extends ClientTable> S save(S entity) {
+    public <S extends ClientEntity> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ClientTable> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends ClientEntity> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<ClientTable> findById(Integer integer) {
+    public Optional<ClientEntity> findById(Integer integer) {
         return Optional.empty();
     }
 
@@ -27,12 +28,12 @@ public class ClientRepository implements CrudRepository<ClientTable, Integer> {
     }
 
     @Override
-    public Iterable<ClientTable> findAll() {
+    public Iterable<ClientEntity> findAll() {
         return null;
     }
 
     @Override
-    public Iterable<ClientTable> findAllById(Iterable<Integer> integers) {
+    public Iterable<ClientEntity> findAllById(Iterable<Integer> integers) {
         return null;
     }
 
@@ -47,7 +48,7 @@ public class ClientRepository implements CrudRepository<ClientTable, Integer> {
     }
 
     @Override
-    public void delete(ClientTable entity) {
+    public void delete(ClientEntity entity) {
 
     }
 
@@ -57,7 +58,7 @@ public class ClientRepository implements CrudRepository<ClientTable, Integer> {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends ClientTable> entities) {
+    public void deleteAll(Iterable<? extends ClientEntity> entities) {
 
     }
 

@@ -1,16 +1,18 @@
-package io.darrion.clientmanager.table;
+package io.darrion.clientmanager.entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
-public class AdvisorTable {
+public class AdvisorEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -29,6 +31,11 @@ public class AdvisorTable {
     private Timestamp createdAt; 
 
     @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt; 
+    private Timestamp updatedAt;
 
+    @OneToMany(mappedBy = "advisorEntity")
+    private Set<SpecializationEntity> specializationEntities;
+
+    @OneToMany(mappedBy = "clientEntity")
+    private Set<ClientEntity> clientEntities;
 }

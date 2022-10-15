@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.table;
+package io.darrion.clientmanager.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class ClientTable {
+public class ClientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
