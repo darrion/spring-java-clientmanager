@@ -26,7 +26,7 @@ public class ClientTable {
     private String lastName; 
 
     @Column(name = "created_at", nullable = false)
-    private Timestamp createAt; 
+    private Timestamp createdAt; 
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt; 
