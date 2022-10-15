@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 @Getter
 @Setter
-public class UserModel {
+public class AdvisorModel {
     Integer id;
     String firstName;
     String middleName;
