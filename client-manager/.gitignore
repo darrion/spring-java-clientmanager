@@ -1,4 +1,4 @@
-client-manager/HELP.md
+HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -35,12 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### macOS ###
-.DS_Store
-
-### Docker ### 
-data/
-
-### Secrets ### 
-.env
