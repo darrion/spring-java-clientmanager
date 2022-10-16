@@ -1,5 +1,6 @@
 package io.darrion.clientmanager.repo;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
@@ -7,6 +8,7 @@ import io.darrion.clientmanager.entity.AdvisorEntity;
 import java.util.Optional;
 
 public class AdvisorRepository implements CrudRepository<AdvisorEntity, Integer> {
+
     @Override
     public <S extends AdvisorEntity> S save(S entity) {
         return null;

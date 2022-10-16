@@ -15,7 +15,6 @@ public class SpecializationEntity {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "advisor_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private AdvisorEntity advisorEntity;
 }

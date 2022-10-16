@@ -38,3 +38,9 @@ out/
 
 ### macOS ###
 .DS_Store
+
+### Docker ### 
+data/
+
+### Secrets ### 
+.env
