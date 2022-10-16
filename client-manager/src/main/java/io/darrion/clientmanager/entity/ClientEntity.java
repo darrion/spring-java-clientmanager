@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class ClientEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -30,5 +31,18 @@ public class ClientEntity {
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt; 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AdvisorEntity advisorEntity;
+
+    @PrePersist
+    public void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 
 }

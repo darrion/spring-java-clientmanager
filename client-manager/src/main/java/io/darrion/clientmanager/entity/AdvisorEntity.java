@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "advisor")
 public class AdvisorEntity {
     
     @Id
@@ -33,9 +33,28 @@ public class AdvisorEntity {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "advisorEntity")
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "advisor_id")
     private Set<SpecializationEntity> specializationEntities;
 
-    @OneToMany(mappedBy = "clientEntity")
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "client_id")
     private Set<ClientEntity> clientEntities;
+
+    @PrePersist
+    public void onCreate() {
+        createdAt = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 }
+
