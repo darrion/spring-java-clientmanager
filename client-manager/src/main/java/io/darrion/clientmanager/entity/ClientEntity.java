@@ -33,6 +33,7 @@ public class ClientEntity {
     private Timestamp updatedAt; 
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "advisor_id")
     private AdvisorEntity advisorEntity;
 
     @PrePersist

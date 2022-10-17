@@ -4,9 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.Set;
 
 import javax.persistence.*;
+
+import org.springframework.data.annotation.CreatedDate;
 
 @Getter
 @Setter
@@ -27,7 +28,7 @@ public class AdvisorEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName; 
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Timestamp createdAt; 
 
     @Column(name = "updated_at")

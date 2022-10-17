@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class Assignment {
 
-    Integer clientId;
-    Integer advisorId; 
+    Advisor advisor; 
+    Client client; 
 }
