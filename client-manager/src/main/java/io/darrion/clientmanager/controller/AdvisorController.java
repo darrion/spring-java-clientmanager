@@ -1,9 +1,5 @@
 package io.darrion.clientmanager.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.catalina.connector.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
+import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.model.Assignment;
+import io.darrion.clientmanager.model.Client;
 import io.darrion.clientmanager.service.AdvisorService;
+import io.darrion.clientmanager.service.ClientService;
 
 @RestController
 @RequestMapping("/advisor")
@@ -28,14 +26,17 @@ public class AdvisorController {
     @Autowired
     AdvisorService advisorService;
 
-    @PostMapping(value = "/assign", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Autowired 
+    ClientService clientService; 
+
+    @PostMapping(value = "/assignClient", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> assign(
-        @RequestBody Assignment assignment
+        @RequestBody Client client
     ) 
     {
         try {
-            advisorService.assign(assignment.getAdvisor(), assignment.getClient());
-            return ResponseEntity.ok(assignment);
+            ClientEntity clientEntity = clientService.add(client);
+            return ResponseEntity.ok(clientEntity);
         } catch (Exception ex) {
             return ResponseEntity.ok(ex);
         }
@@ -55,7 +56,7 @@ public class AdvisorController {
         @RequestBody Advisor advisor
     ) 
     {
-        AdvisorEntity advisorEntity = advisorService.update(advisor);
+        AdvisorEntity advisorEntity = advisorService.add(advisor);
         return ResponseEntity.ok(advisorEntity);
     }
 
