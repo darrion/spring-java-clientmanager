@@ -1,11 +1,13 @@
 package io.darrion.clientmanager.repo;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import io.darrion.clientmanager.entity.ClientEntity;
 
 import java.util.Optional;
 
+@Repository
 public class ClientRepository implements CrudRepository<ClientEntity, Integer> {
     @Override
     public <S extends ClientEntity> S save(S entity) {

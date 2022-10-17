@@ -3,6 +3,8 @@ package io.darrion.clientmanager.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,12 +14,30 @@ import org.springframework.web.bind.annotation.RestController;
 import io.darrion.clientmanager.entity.AdvisorEntity;
 import io.darrion.clientmanager.model.Advisor;
 import io.darrion.clientmanager.model.Assignment;
+import io.darrion.clientmanager.service.AdvisorService;
 
 @RestController("/advisor")
 public class AdvisorController {
 
+    @Autowired
+    ModelMapper modelMapper;
+
+    @Autowired
+    AdvisorService advisorService;
+
     @PostMapping(value = "/assign", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> assign(@RequestBody Assignment assignment) {
+    public ResponseEntity<Object> assign(
+        @RequestBody Assignment assignment
+    ) {
         return ResponseEntity.ok(assignment);
+    }
+
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> add(
+        @RequestBody Advisor advisor
+    ) {
+        AdvisorEntity advisorEntity = modelMapper.map(advisor, AdvisorEntity.class);
+        advisorService.add(advisorEntity);
+        return ResponseEntity.ok(advisorEntity);
     }
 }
