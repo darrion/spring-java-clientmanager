@@ -15,6 +15,10 @@ public class SpecializationEntity {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Column(name = "focus", nullable = false) 
+    private String focus;
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "advisor_id")
     private AdvisorEntity advisorEntity;
 }
