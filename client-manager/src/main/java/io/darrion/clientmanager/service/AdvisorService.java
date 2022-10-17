@@ -36,19 +36,4 @@ public class AdvisorService {
         AdvisorEntity advisorEntity = modelMapper.map(advisor, AdvisorEntity.class);
         return advisorRepository.save(advisorEntity);
     }
-
-    public AdvisorEntity update(Advisor advisor) {
-        return this.add(advisor);
-    }
-
-    public ClientEntity assign(Advisor advisor, Client client) {
-        client.setAdvisor(advisor);
-        ClientEntity clientEntity = modelMapper.map(client, ClientEntity.class);
-        return clientRepository.save(clientEntity);
-    }
-    
-    public void remove(Advisor advisor) {
-        AdvisorEntity advisorEntity = modelMapper.map(advisor, AdvisorEntity.class);
-        advisorRepository.delete(advisorEntity);
-    }
 }

@@ -36,8 +36,4 @@ public class SpecializationService {
         specializationEntity.setAdvisorEntity(advisorEntity);
         return specializationRepository.save(specializationEntity);
     }
-
-    public SpecializationEntity update(Specialization specialization) {
-        return this.add(specialization);
-    }
 }

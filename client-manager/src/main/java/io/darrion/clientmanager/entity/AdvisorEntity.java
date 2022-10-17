@@ -12,36 +12,5 @@ import org.springframework.data.annotation.CreatedDate;
 @Getter
 @Setter
 @Entity(name = "advisors")
-public class AdvisorEntity {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @Column(name = "first_name", nullable = false)
-    private String firstName; 
-
-    @Column(name = "middle_name")
-    private String middleName; 
-
-    @Column(name = "last_name", nullable = false)
-    private String lastName; 
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Timestamp createdAt; 
-
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
-
-    @PrePersist
-    public void onCreate() {
-        createdAt = new Timestamp(System.currentTimeMillis());
-    }
-
-    @PreUpdate
-    public void onUpdate() {
-        updatedAt = new Timestamp(System.currentTimeMillis());
-    }
-}
+public class AdvisorEntity extends UserEntity {}
 
