@@ -28,16 +28,31 @@ public class AdvisorController {
     @PostMapping(value = "/assign", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> assign(
         @RequestBody Assignment assignment
-    ) {
-        return ResponseEntity.ok(assignment);
+    ) 
+    {
+        try {
+            advisorService.assign(assignment.getAdvisor(), assignment.getClient());
+            return ResponseEntity.ok(assignment);
+        } catch (Exception ex) {
+            return ResponseEntity.ok(ex);
+        }
     }
 
     @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> add(
         @RequestBody Advisor advisor
-    ) {
-        AdvisorEntity advisorEntity = modelMapper.map(advisor, AdvisorEntity.class);
-        advisorService.add(advisorEntity);
+    ) 
+    {
+        AdvisorEntity advisorEntity = advisorService.add(advisor);
+        return ResponseEntity.ok(advisorEntity);
+    }
+
+    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> update(
+        @RequestBody Advisor advisor
+    ) 
+    {
+        AdvisorEntity advisorEntity = advisorService.update(advisor);
         return ResponseEntity.ok(advisorEntity);
     }
 }
