@@ -7,11 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "specializations")
 public class SpecializationEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

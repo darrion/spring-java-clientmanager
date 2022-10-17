@@ -9,11 +9,11 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "clients")
 public class ClientEntity {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
