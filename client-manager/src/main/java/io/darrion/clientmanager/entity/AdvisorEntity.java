@@ -11,6 +11,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity(name = "advisors")
-public class AdvisorEntity extends UserEntity {}
+public class AdvisorEntity extends UserEntity {
+}
 

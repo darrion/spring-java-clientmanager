@@ -27,36 +27,14 @@ public class AdvisorController {
     AdvisorService advisorService;
 
     @Autowired 
-    ClientService clientService; 
+    ClientService clientService;
 
-    @PostMapping(value = "/assignClient", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> assign(
-        @RequestBody Client client
-    ) 
-    {
-        try {
-            ClientEntity clientEntity = clientService.add(client);
-            return ResponseEntity.ok(clientEntity);
-        } catch (Exception ex) {
-            return ResponseEntity.ok(ex);
-        }
-    }
-
-    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> add(
         @RequestBody Advisor advisor
     ) 
     {
-        AdvisorEntity advisorEntity = advisorService.add(advisor);
-        return ResponseEntity.ok(advisorEntity);
-    }
-
-    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> update(
-        @RequestBody Advisor advisor
-    ) 
-    {
-        AdvisorEntity advisorEntity = advisorService.add(advisor);
+        AdvisorEntity advisorEntity = advisorService.save(advisor);
         return ResponseEntity.ok(advisorEntity);
     }
 

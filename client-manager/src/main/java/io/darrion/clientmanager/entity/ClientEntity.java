@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity(name = "clients")
 public class ClientEntity extends UserEntity {
 

@@ -1,5 +1,8 @@
 package io.darrion.clientmanager.controller;
 
+import io.darrion.clientmanager.entity.ClientEntity;
+import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
+import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,19 +20,9 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @PostMapping("/add")
-    public ResponseEntity<Object> add(@RequestBody Client client) {
-        return ResponseEntity.ok(clientService.add(client));
-    }
-
-    @PostMapping("/update") 
-    public ResponseEntity<Object> update(@RequestBody Client client) {
-        return ResponseEntity.ok(clientService.add(client)); 
-    }
-
-    @PostMapping("/assignAdvisor")
-    public ResponseEntity<Object> assign(@RequestBody Client client) {
-        return ResponseEntity.ok(clientService.add(client));
+    @PostMapping("/update")
+    public ResponseEntity<ClientEntity> update(@RequestBody Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+        return ResponseEntity.ok(clientService.save(client));
     }
     
 }
