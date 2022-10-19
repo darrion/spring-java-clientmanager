@@ -6,8 +6,13 @@ import org.springframework.stereotype.Repository;
 
 import io.darrion.clientmanager.entity.ClientEntity;
 
+import java.util.List;
+
 @Repository
 public interface ClientRepository extends CrudRepository<ClientEntity, Integer> {
-    @Query(value = "SELECT count(*) > 0 FROM clients c WHERE c.email=?1 ", nativeQuery = true)
+    @Query(value = "SELECT count(c) > 0 FROM Clients c WHERE c.email=?1 ", nativeQuery = true)
     Boolean existsByEmail(String email);
+
+    @Query(nativeQuery = true)
+    ClientEntity findByEmail(String email);
 }

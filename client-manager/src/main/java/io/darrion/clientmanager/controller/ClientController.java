@@ -20,9 +20,14 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+    @PostMapping("/add")
+    public ResponseEntity<ClientEntity> add(@RequestBody Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+        return ResponseEntity.ok(clientService.add(client));
+    }
+
     @PostMapping("/update")
     public ResponseEntity<ClientEntity> update(@RequestBody Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
-        return ResponseEntity.ok(clientService.save(client));
+        return ResponseEntity.ok(clientService.update(client));
     }
     
 }
