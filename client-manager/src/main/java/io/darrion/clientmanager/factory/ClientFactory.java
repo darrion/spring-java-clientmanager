@@ -27,16 +27,27 @@ public class ClientFactory {
     }
 
     public static ClientEntity create(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+
         ClientEntity clientEntity = new ClientEntity();
+
+        AdvisorEntity advisorEntity = null;
+
+        Integer advisorId = client.getAdvisorId();
+
+        if (advisorId != null) {
+             advisorEntity = advisorRepository.findById(client.getAdvisorId()).orElse(null);
+        }
+
+        if (advisorId != null && advisorEntity == null) {
+            throw new AdvisorDoesNotExistException();
+        }
+
         clientEntity.setFirstName(client.getFirstName());
         clientEntity.setMiddleName(client.getMiddleName());
         clientEntity.setLastName(client.getLastName());
         clientEntity.setEmail(client.getEmail());
-        AdvisorEntity advisorEntity = advisorRepository.findById(client.getAdvisorId()).orElse(null);
-        if (advisorEntity == null) {
-            throw new AdvisorDoesNotExistException();
-        }
         clientEntity.setAdvisorEntity(advisorEntity);
+
         return clientEntity;
     }
 }

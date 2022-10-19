@@ -15,6 +15,8 @@ import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.model.Client;
 import io.darrion.clientmanager.repo.ClientRepository;
 
+import java.util.Optional;
+
 @Service
 public class ClientService {
 
@@ -27,20 +29,28 @@ public class ClientService {
     @Autowired 
     ModelMapper modelMapper;
     
-    public ClientEntity save(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+    public ClientEntity add(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+
         ClientEntity clientEntity = ClientFactory.create(client);
-        AdvisorEntity advisorEntity = clientEntity.getAdvisorEntity();
         String clientEmail = clientEntity.getEmail();
-        if (advisorEntity != null && !advisorRepository.existsById(advisorEntity.getId())) {
-            throw new AdvisorDoesNotExistException();
+        if (clientRepository.existsByEmail(clientEmail)) {
+            throw new ClientEmailDuplicateException(clientEmail);
         }
-        try {
-            clientEntity = clientRepository.save(clientEntity);
-        } catch (DataIntegrityViolationException ex) {
-            if (ex.getMostSpecificCause().getMessage().contains(String.format("(email)=(%s) already exists", clientEmail))) {
-                throw new ClientEmailDuplicateException(clientEmail);
-            }
-        }
+        clientEntity = clientRepository.save(clientEntity);
+
+        return clientEntity;
+    }
+
+    public ClientEntity update(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+
+        Integer targetId = null;
+        ClientEntity targetClientEntity = clientRepository.findByEmail(client.getEmail());
+        targetId = targetClientEntity.getId();
+        ClientEntity clientEntity = ClientFactory.create(client);
+        clientEntity.setId(targetId);
+
+        clientEntity = clientRepository.save(clientEntity);
+
         return clientEntity;
     }
 }

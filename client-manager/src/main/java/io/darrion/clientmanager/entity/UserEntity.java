@@ -1,14 +1,18 @@
 package io.darrion.clientmanager.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public class UserEntity {
     @Id
@@ -29,18 +33,18 @@ public class UserEntity {
     private String lastName;
 
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Timestamp createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private Date updatedAt;
 
     @PrePersist
     public void onCreate() {
-        createdAt = new Timestamp(System.currentTimeMillis());
+        createdAt = new Date();
     }
 
     @PreUpdate
     public void onUpdate() {
-        updatedAt = new Timestamp(System.currentTimeMillis());
+        updatedAt = new Date();
     }
 }
