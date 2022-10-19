@@ -2,6 +2,8 @@ package io.darrion.clientmanager.service;
 
 import java.util.Optional;
 
+import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
+import io.darrion.clientmanager.factory.SpecializationFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,15 +27,9 @@ public class SpecializationService {
     @Autowired
     ModelMapper modelMapper;
 
-    public SpecializationEntity add(Specialization specialization) {
-        AdvisorEntity advisorEntity = null; 
-        Advisor advisor = specialization.getAdvisor();
-        Optional<AdvisorEntity> optAdvEnt = advisorRepository.findById(advisor.getId());
-        if (optAdvEnt.isPresent()) {
-            advisorEntity = optAdvEnt.get();
-        }
-        SpecializationEntity specializationEntity = modelMapper.map(specialization, SpecializationEntity.class);
-        specializationEntity.setAdvisorEntity(advisorEntity);
+    public SpecializationEntity save(Specialization specialization) throws AdvisorDoesNotExistException {
+
+        SpecializationEntity specializationEntity = SpecializationFactory.create(specialization);
         return specializationRepository.save(specializationEntity);
     }
 }

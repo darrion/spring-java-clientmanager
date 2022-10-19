@@ -19,6 +19,6 @@ public class SpecializationEntity {
     private String focus;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "advisor_id")
+    @JoinColumn(name = "advisor_id", referencedColumnName = "id")
     private AdvisorEntity advisorEntity;
 }
