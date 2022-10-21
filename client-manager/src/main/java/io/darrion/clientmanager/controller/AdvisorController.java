@@ -1,7 +1,11 @@
 package io.darrion.clientmanager.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.ClientEntity;
+import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
 import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.model.Client;
+import io.darrion.clientmanager.response.ApiException;
 import io.darrion.clientmanager.service.AdvisorService;
 import io.darrion.clientmanager.service.ClientService;
 
@@ -29,12 +33,29 @@ public class AdvisorController {
     @Autowired 
     ClientService clientService;
 
-    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> add(
         @RequestBody Advisor advisor
-    ) 
+    ) throws AdvisorEmailDuplicateException 
     {
-        AdvisorEntity advisorEntity = advisorService.save(advisor);
+        AdvisorEntity advisorEntity = advisorService.add(advisor);
+        return ResponseEntity.ok(advisorEntity);
+    }
+
+
+    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> update(
+        @RequestBody Advisor advisor
+    ) throws AdvisorEmailDuplicateException 
+    {
+        if (advisor.getId() == null) {
+            List<String> errors = new ArrayList<>();
+            errors.add("id: ID required.");
+            return new ResponseEntity<>(
+                new ApiException(HttpStatus.BAD_REQUEST, errors), HttpStatus.BAD_REQUEST
+                );
+        }
+        AdvisorEntity advisorEntity = advisorService.update(advisor);
         return ResponseEntity.ok(advisorEntity);
     }
 

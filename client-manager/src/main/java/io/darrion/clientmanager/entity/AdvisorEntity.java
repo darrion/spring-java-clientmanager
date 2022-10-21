@@ -1,18 +1,59 @@
 package io.darrion.clientmanager.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.ConstructorResult;
+import javax.persistence.ColumnResult;
 
-import javax.persistence.*;
-
-import org.springframework.data.annotation.CreatedDate;
+import io.darrion.clientmanager.constants.Name;
+import io.darrion.clientmanager.constants.Query;
+import io.darrion.clientmanager.constants.Column;
 
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity(name = "advisors")
+@NamedNativeQuery(
+  name = "AdvisorEntity.findByEmail",
+  resultSetMapping = Name.ADVISOR_MAPPING,
+  resultClass = AdvisorEntity.class,
+  query = Query.FIND_ADVISOR_BY_EMAIL
+)
+@SqlResultSetMapping(
+  name = Name.ADVISOR_MAPPING,
+  classes = @ConstructorResult(
+    targetClass = AdvisorEntity.class,
+    columns = {
+      @ColumnResult(name = Column.ID, type = Integer.class),
+      @ColumnResult(name = Column.FIRST_NAME, type = String.class),
+      @ColumnResult(name = Column.MIDDLE_NAME, type = String.class),
+      @ColumnResult(name = Column.LAST_NAME, type = String.class),
+      @ColumnResult(name = Column.EMAIL, type = String.class),
+      @ColumnResult(name = Column.CREATED_AT, type = java.util.Date.class),
+      @ColumnResult(name = Column.UPDATED_AT, type = java.util.Date.class),
+    }
+  )
+)
+@AllArgsConstructor
 public class AdvisorEntity extends UserEntity {
+
+    public AdvisorEntity(
+            Integer id,
+            String firstName,
+            String middleName,
+            String lastName,
+            String email,
+            java.util.Date createdAt,
+            java.util.Date updatedAt
+        ) {
+            super(id, firstName, middleName, lastName, email, createdAt, updatedAt);
+        }
 }
 

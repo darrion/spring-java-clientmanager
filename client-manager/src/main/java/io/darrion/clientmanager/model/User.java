@@ -5,7 +5,10 @@ import java.sql.Timestamp;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Setter
