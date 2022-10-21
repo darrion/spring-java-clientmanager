@@ -19,7 +19,7 @@ public class ClientRepositoryTest {
     private ClientRepository clientRepository;
 
     @Test
-    public void testDoesExistByEmail() {
+    void testDoesExistByEmail() {
         ClientEntity clientEntity = new ClientEntity();
         clientEntity.setFirstName("Iqaluk");
         clientEntity.setLastName("Guo");
@@ -29,14 +29,20 @@ public class ClientRepositoryTest {
         assertThat(result).isTrue();
     }
 
+    @Test 
+    void testDoesNotExistByEmail() {
+        Boolean result = clientRepository.existsByEmail("iqalukguo@gmail.com");
+        assertThat(result).isFalse();
+    }
+
     @Test
-    public void testGetByEmail() {
+    void testGetByEmail() {
         ClientEntity clientEntity = new ClientEntity();
         clientEntity.setFirstName("Iqaluk");
         clientEntity.setLastName("Guo");
         clientEntity.setEmail("iqalukguo@gmail.com");
-        entityManager.persist(clientEntity);
+        clientRepository.save(clientEntity);
         ClientEntity result = clientRepository.findByEmail(clientEntity.getEmail());
-        assertThat(result.getEmail()).isEqualTo(clientEntity.getEmail());
+        assertThat(result.getEmail()).isEqualTo("iqalukguo@gmail.com");
     }
 }

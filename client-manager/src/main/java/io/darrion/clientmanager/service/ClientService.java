@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.model.Client;
@@ -17,7 +18,10 @@ import io.darrion.clientmanager.repo.ClientRepository;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 @Service
+@Validated
 public class ClientService {
 
     @Autowired
@@ -29,11 +33,12 @@ public class ClientService {
     @Autowired 
     ModelMapper modelMapper;
     
-    public ClientEntity add(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+    public ClientEntity add(@Valid Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
 
         ClientEntity clientEntity = ClientFactory.create(client);
         String clientEmail = clientEntity.getEmail();
-        if (clientRepository.existsByEmail(clientEmail)) {
+        Boolean exists = clientRepository.existsByEmail(clientEmail);
+        if (Boolean.TRUE.equals(exists)) {
             throw new ClientEmailDuplicateException(clientEmail);
         }
         clientEntity = clientRepository.save(clientEntity);
@@ -43,9 +48,12 @@ public class ClientService {
 
     public ClientEntity update(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
 
-        Integer targetId = null;
-        ClientEntity targetClientEntity = clientRepository.findByEmail(client.getEmail());
-        targetId = targetClientEntity.getId();
+        Integer clientId = client.getId();
+        ClientEntity targetClientEntity = clientRepository.findById(clientId).orElse(null);
+        if (targetClientEntity == null) {
+            return this.add(client);
+        }
+        Integer targetId = targetClientEntity.getId();
         ClientEntity clientEntity = ClientFactory.create(client);
         clientEntity.setId(targetId);
 

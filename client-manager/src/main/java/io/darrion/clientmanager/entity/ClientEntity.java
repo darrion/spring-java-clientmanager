@@ -1,12 +1,14 @@
 package io.darrion.clientmanager.entity;
 
+import javax.persistence.*;
+
+import io.darrion.clientmanager.constants.Query;
+import io.darrion.clientmanager.constants.Column;
+import io.darrion.clientmanager.constants.Name;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -15,40 +17,41 @@ import java.sql.Timestamp;
 @Entity(name = "clients")
 @NoArgsConstructor
 @NamedNativeQuery(
-        name = "ClientEntity.findByEmail",
-        resultSetMapping = "clientResultMapping",
-        resultClass = ClientEntity.class,
-        query = "SELECT id, first_name, middle_name, last_name, email, created_at, updated_at FROM clients WHERE email=?1"
+  name = "ClientEntity.findByEmail",
+  resultSetMapping = Name.CLIENT_MAPPING,
+  resultClass = ClientEntity.class,
+  query = Query.FIND_CLIENT_BY_EMAIL
 )
 @SqlResultSetMapping(
-        name="clientResultMapping",
-        classes = @ConstructorResult(
-                targetClass = ClientEntity.class,
-                columns = {
-                        @ColumnResult(name = "id", type = Integer.class),
-                        @ColumnResult(name = "first_name", type = String.class),
-                        @ColumnResult(name = "middle_name", type = String.class),
-                        @ColumnResult(name = "last_name", type = String.class),
-                        @ColumnResult(name = "email", type = String.class),
-                        @ColumnResult(name = "created_at", type = java.util.Date.class),
-                        @ColumnResult(name = "updated_at", type = java.util.Date.class)
-                }))
+  name = Name.CLIENT_MAPPING,
+  classes = @ConstructorResult(
+    targetClass = ClientEntity.class,
+    columns = {
+      @ColumnResult(name = Column.ID, type = Integer.class),
+      @ColumnResult(name = Column.FIRST_NAME, type = String.class),
+      @ColumnResult(name = Column.MIDDLE_NAME, type = String.class),
+      @ColumnResult(name = Column.LAST_NAME, type = String.class),
+      @ColumnResult(name = Column.EMAIL, type = String.class),
+      @ColumnResult(name = Column.CREATED_AT, type = java.util.Date.class),
+      @ColumnResult(name = Column.UPDATED_AT, type = java.util.Date.class),
+    }
+  )
+)
 public class ClientEntity extends UserEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "advisor_id")
-    private AdvisorEntity advisorEntity;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "advisor_id")
+  private AdvisorEntity advisorEntity;
 
-    public ClientEntity(Integer id,
-                        String firstName,
-                        String middleName,
-                        String lastName,
-                        String email,
-                        java.util.Date createdAt,
-                        java.util.Date updatedAt
-    )
-    {
-        super(id, email, firstName, middleName, lastName, createdAt, updatedAt);
-    }
-
+  public ClientEntity(
+    Integer id,
+    String firstName,
+    String middleName,
+    String lastName,
+    String email,
+    java.util.Date createdAt,
+    java.util.Date updatedAt
+  ) {
+    super(id, firstName, middleName, lastName, email, createdAt, updatedAt);
+  }
 }

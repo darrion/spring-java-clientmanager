@@ -27,9 +27,21 @@ public class SpecializationService {
     @Autowired
     ModelMapper modelMapper;
 
-    public SpecializationEntity save(Specialization specialization) throws AdvisorDoesNotExistException {
+    public SpecializationEntity add(Specialization specialization) throws AdvisorDoesNotExistException {
 
-        SpecializationEntity specializationEntity = SpecializationFactory.create(specialization);
+        Integer advisorId = specialization.getAdvisorId();
+        AdvisorEntity advisorEntity = advisorRepository.findById(advisorId).orElse(null);
+        if (advisorEntity == null) {
+            throw new AdvisorDoesNotExistException();
+        }
+        SpecializationEntity specializationEntity = SpecializationFactory.create(specialization, advisorEntity);
         return specializationRepository.save(specializationEntity);
+    }
+
+
+    public void remove(Specialization specialization) {
+
+        SpecializationEntity specializationEntity = SpecializationFactory.create(specialization, null);
+        specializationRepository.delete(specializationEntity);
     }
 }

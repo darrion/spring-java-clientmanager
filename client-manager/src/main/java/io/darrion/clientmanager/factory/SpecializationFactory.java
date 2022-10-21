@@ -18,17 +18,9 @@ public class SpecializationFactory {
         SpecializationFactory.advisorRepository = advisorRepository;
     }
 
-    public static SpecializationEntity create(Specialization specialization) throws AdvisorDoesNotExistException {
+    public static SpecializationEntity create(Specialization specialization, AdvisorEntity advisorEntity) {
 
         SpecializationEntity specializationEntity = new SpecializationEntity();
-
-        Integer advisorId = specialization.getAdvisorId();
-        AdvisorEntity advisorEntity = advisorRepository.findById(advisorId).orElse(null);
-
-        if (advisorEntity == null) {
-            throw new AdvisorDoesNotExistException();
-        }
-
         specializationEntity.setAdvisorEntity(advisorEntity);
         specializationEntity.setId(specialization.getId());
         specializationEntity.setFocus(specialization.getFocus());
