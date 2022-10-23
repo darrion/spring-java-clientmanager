@@ -17,12 +17,12 @@ public class ClientFactory {
     static ClientRepository clientRepository;
 
     @Autowired
-    public void setAdvisorRepository(AdvisorRepository advisorRepository) {
+    public static void setAdvisorRepository(AdvisorRepository advisorRepository) {
         ClientFactory.advisorRepository = advisorRepository;
     }
 
     @Autowired
-    public void setClientRepository(ClientRepository clientRepository) {
+    public static void setClientRepository(ClientRepository clientRepository) {
         ClientFactory.clientRepository = clientRepository;
     }
 

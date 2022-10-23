@@ -27,4 +27,8 @@ public class Query {
         a.updated_at AS updated_at
         FROM advisors a WHERE email=?1
         """;
-}
+    public static final String FIND_CLIENTS_OF_ADVISOR = """
+        SELECT 
+        a.    
+        """;
+    }
