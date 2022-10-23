@@ -1,5 +1,7 @@
 package io.darrion.clientmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +9,9 @@ import lombok.Setter;
 @Setter
 public class Assignment {
 
-    Advisor advisor; 
-    Client client; 
+    @JsonProperty("advisor_id")
+    Integer advisorId; 
+
+    @JsonProperty("client_id")
+    Integer clientId;
 }

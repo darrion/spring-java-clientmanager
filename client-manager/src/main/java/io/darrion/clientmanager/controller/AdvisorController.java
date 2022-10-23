@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
+import io.darrion.clientmanager.entity.AssignmentEntity;
+import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
 import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
+import io.darrion.clientmanager.exception.ClientDoesNotExistException;
 import io.darrion.clientmanager.model.Advisor;
+import io.darrion.clientmanager.model.Assignment;
 import io.darrion.clientmanager.response.ApiException;
 import io.darrion.clientmanager.service.AdvisorService;
 import io.darrion.clientmanager.service.ClientService;
@@ -57,6 +61,15 @@ public class AdvisorController {
         }
         AdvisorEntity advisorEntity = advisorService.update(advisor);
         return ResponseEntity.ok(advisorEntity);
+    }
+
+    @PostMapping(value = "/assign", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> assign(
+        @RequestBody Assignment assignment
+    ) throws AdvisorDoesNotExistException, ClientDoesNotExistException
+    {
+        AssignmentEntity assignmentEntity = advisorService.assign(assignment); 
+        return ResponseEntity.ok(assignmentEntity);
     }
 
 }

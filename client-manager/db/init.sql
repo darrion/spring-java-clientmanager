@@ -30,3 +30,15 @@ CREATE TABLE IF NOT EXISTS specializations (
         FOREIGN KEY (advisor_id)
             REFERENCES advisors(id)
 );
+
+CREATE TABLE IF NOT EXISTS assignment (
+    client_id INT, 
+    advisor_id INT, 
+    PRIMARY KEY (client_id, advisor_id),
+    CONSTRAINT fk_advisor 
+        FOREIGN KEY (advisor_id)
+            REFERENCES advisors(id), 
+    CONSTRAINT fk_client 
+        FOREIGN KEY (client_id) 
+            REFERENCES clients(id)
+)
