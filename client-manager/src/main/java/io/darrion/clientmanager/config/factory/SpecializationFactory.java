@@ -1,8 +1,7 @@
-package io.darrion.clientmanager.factory;
+package io.darrion.clientmanager.config.factory;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
 import io.darrion.clientmanager.entity.SpecializationEntity;
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
 import io.darrion.clientmanager.model.Specialization;
 import io.darrion.clientmanager.repo.AdvisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

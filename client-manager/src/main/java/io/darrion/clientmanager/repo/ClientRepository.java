@@ -15,4 +15,7 @@ public interface ClientRepository extends CrudRepository<ClientEntity, Integer> 
 
     @Query(nativeQuery = true)
     ClientEntity findByEmail(String email);
+
+    @Query(nativeQuery = true)
+    List<ClientEntity> findClientsByAdvisorId(Integer advisorId);
 }
