@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.factory;
+package io.darrion.clientmanager.config.factory;
 
 public class AdvisorFactory {
 

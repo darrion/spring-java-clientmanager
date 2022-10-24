@@ -1,16 +1,16 @@
 package io.darrion.clientmanager.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.AssignmentEntity;
 import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
 import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
 import io.darrion.clientmanager.exception.ClientDoesNotExistException;
-import io.darrion.clientmanager.factory.AssignmentFactory;
 import io.darrion.clientmanager.model.Advisor;
 import io.darrion.clientmanager.model.Assignment;
 import io.darrion.clientmanager.repo.AdvisorRepository;
@@ -21,9 +21,9 @@ public class AdvisorService {
     
     @Autowired
     AdvisorRepository advisorRepository;
-    
+
     @Autowired 
-    ClientRepository clientRepository; 
+    ClientRepository clientRepository;
 
     @Autowired
     ModelMapper modelMapper;
@@ -49,7 +49,7 @@ public class AdvisorService {
         return advisorRepository.save(advisorEntity);
     }
 
-    public AssignmentEntity assign(Assignment assignment) throws AdvisorDoesNotExistException, ClientDoesNotExistException {
+    public ClientEntity assign(Assignment assignment) throws AdvisorDoesNotExistException, ClientDoesNotExistException {
         Integer advisorId = assignment.getAdvisorId();
         Integer clientId = assignment.getClientId();
         AdvisorEntity advisorEntity = advisorRepository.findById(advisorId).orElse(null);
@@ -60,6 +60,16 @@ public class AdvisorService {
         if (clientEntity == null) {
             throw new ClientDoesNotExistException();
         }
-        return AssignmentFactory.create(assignment, advisorEntity, clientEntity);
+        clientEntity.setAdvisorEntity(advisorEntity);
+        return clientRepository.save(clientEntity);
+    }
+
+    public List<ClientEntity> getClients(Advisor advisor) throws AdvisorDoesNotExistException {
+        Integer advisorId = advisor.getId();
+        AdvisorEntity advisorEntity = advisorRepository.findById(advisorId).orElse(null);
+        if (advisorEntity == null) {
+            throw new AdvisorDoesNotExistException();
+        }
+        return clientRepository.findClientsByAdvisorId(advisorId);
     }
 }

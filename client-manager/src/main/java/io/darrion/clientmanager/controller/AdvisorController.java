@@ -3,18 +3,19 @@ package io.darrion.clientmanager.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.darrion.clientmanager.entity.ClientEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.AssignmentEntity;
 import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
 import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
 import io.darrion.clientmanager.exception.ClientDoesNotExistException;
@@ -68,8 +69,16 @@ public class AdvisorController {
         @RequestBody Assignment assignment
     ) throws AdvisorDoesNotExistException, ClientDoesNotExistException
     {
-        AssignmentEntity assignmentEntity = advisorService.assign(assignment); 
-        return ResponseEntity.ok(assignmentEntity);
+        ClientEntity assignedClientEntity = advisorService.assign(assignment);
+        return ResponseEntity.ok(assignedClientEntity);
+    }
+
+    @GetMapping(value = "/clients", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getClients(
+        @RequestBody Advisor advisor
+    ) throws AdvisorDoesNotExistException {
+        List<ClientEntity> clients = advisorService.getClients(advisor);
+        return ResponseEntity.ok(clients);
     }
 
 }

@@ -1,9 +1,8 @@
-package io.darrion.clientmanager.factory;
+package io.darrion.clientmanager.config.factory;
 
 import io.darrion.clientmanager.entity.AdvisorEntity;
 import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
 import io.darrion.clientmanager.model.Client;
 import io.darrion.clientmanager.repo.AdvisorRepository;
 import io.darrion.clientmanager.repo.ClientRepository;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientFactory {
+
+    private ClientFactory() {}
 
     static AdvisorRepository advisorRepository;
     static ClientRepository clientRepository;
@@ -26,7 +27,7 @@ public class ClientFactory {
         ClientFactory.clientRepository = clientRepository;
     }
 
-    public static ClientEntity create(Client client) throws AdvisorDoesNotExistException, ClientEmailDuplicateException {
+    public static ClientEntity create(Client client) throws AdvisorDoesNotExistException {
 
         ClientEntity clientEntity = new ClientEntity();
 
@@ -35,10 +36,10 @@ public class ClientFactory {
         Integer advisorId = client.getAdvisorId();
 
         if (advisorId != null) {
-             advisorEntity = advisorRepository.findById(client.getAdvisorId()).orElse(null);
+            advisorEntity = advisorRepository.findById(client.getAdvisorId()).orElse(null);
         }
 
-        if (advisorId != null && advisorEntity == null) {
+        if (advisorEntity == null) {
             throw new AdvisorDoesNotExistException();
         }
 

@@ -1,6 +1,5 @@
 package io.darrion.clientmanager.controller;
 
-import io.darrion.clientmanager.entity.ClientEntity;
 import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
 import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
 
@@ -8,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

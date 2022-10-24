@@ -22,6 +22,12 @@ import lombok.Setter;
   resultClass = ClientEntity.class,
   query = Query.FIND_CLIENT_BY_EMAIL
 )
+@NamedNativeQuery(
+        name = "ClientEntity.findClientsByAdvisorId", 
+        resultSetMapping = Name.CLIENT_MAPPING,
+        resultClass = ClientEntity.class, 
+        query = Query.FIND_CLIENTS_BY_ADVISOR_ID
+)
 @SqlResultSetMapping(
   name = Name.CLIENT_MAPPING,
   classes = @ConstructorResult(
