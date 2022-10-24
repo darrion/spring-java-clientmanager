@@ -18,16 +18,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 public class ClientRepositoryTest {
 
     @Autowired
-    private TestEntityManager entityManager;
-
-    @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
     private AdvisorRepository advisorRepository;
-
-    @Autowired
-    private AssignmentRepository assignmentRepository;
 
     @Test
     void testDoesExistByEmail() {
@@ -35,7 +29,7 @@ public class ClientRepositoryTest {
         clientEntity.setFirstName("Iqaluk");
         clientEntity.setLastName("Guo");
         clientEntity.setEmail("iqalukguo@esmail.com");
-        entityManager.persist(clientEntity);
+        clientRepository.save(clientEntity);
         Boolean result = clientRepository.existsByEmail(clientEntity.getEmail());
         assertThat(result).isTrue();
     }
