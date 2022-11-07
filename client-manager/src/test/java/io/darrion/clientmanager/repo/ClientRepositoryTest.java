@@ -3,15 +3,21 @@ package io.darrion.clientmanager.repo;
 import io.darrion.clientmanager.entity.AdvisorEntity;
 import io.darrion.clientmanager.entity.ClientEntity;
 
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+
+import javax.persistence.EntityManager;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -21,7 +27,7 @@ public class ClientRepositoryTest {
     private ClientRepository clientRepository;
 
     @Autowired
-    private AdvisorRepository advisorRepository;
+    private EntityManager entityManager;
 
     @Test
     void testDoesExistByEmail() {
@@ -29,8 +35,8 @@ public class ClientRepositoryTest {
         clientEntity.setFirstName("Iqaluk");
         clientEntity.setLastName("Guo");
         clientEntity.setEmail("iqalukguo@esmail.com");
-        clientRepository.save(clientEntity);
-        Boolean result = clientRepository.existsByEmail(clientEntity.getEmail());
+        entityManager.persist(clientEntity);
+        Boolean result = clientRepository.existsByEmail("iqalukguo@esmail.com");
         assertThat(result).isTrue();
     }
 
@@ -46,13 +52,13 @@ public class ClientRepositoryTest {
         clientEntity.setFirstName("Iqaluk");
         clientEntity.setLastName("Guo");
         clientEntity.setEmail("iqalukguo@email.com");
-        clientRepository.save(clientEntity);
+        entityManager.persist(clientEntity);
         ClientEntity result = clientRepository.findByEmail(clientEntity.getEmail());
         assertThat(result.getEmail()).isEqualTo("iqalukguo@email.com");
     }
 
     @Test
-    void getClientsByAdvisorId() {
+    void testFindClientsByAdvisorId() {
         
         ClientEntity clientEntity1 = new ClientEntity();
         clientEntity1.setFirstName("Iqaluk");
@@ -69,14 +75,14 @@ public class ClientRepositoryTest {
         advisorEntity.setLastName("Advice");
         advisorEntity.setEmail("frankadvice@email.com");
 
-        clientRepository.save(clientEntity1);
-        clientRepository.save(clientEntity2);
-        advisorRepository.save(advisorEntity);
+        entityManager.persist(clientEntity1);
+        entityManager.persist(clientEntity2);
+        entityManager.persist(advisorEntity);
 
         clientEntity1.setAdvisorEntity(advisorEntity);
         clientEntity2.setAdvisorEntity(advisorEntity);
 
-        clientRepository.save(clientEntity1);
+        entityManager.persist(clientEntity1);
 
         List<ClientEntity> results = clientRepository.findClientsByAdvisorId(advisorEntity.getId());
         assertThat(results.size()).isEqualTo(2);
