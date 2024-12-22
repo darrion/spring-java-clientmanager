@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.entity;
+package com.example.clientmanager.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +12,9 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.ConstructorResult;
 import javax.persistence.ColumnResult;
 
-import io.darrion.clientmanager.constants.Name;
-import io.darrion.clientmanager.constants.Query;
-import io.darrion.clientmanager.constants.Column;
+import com.example.clientmanager.constants.Name;
+import com.example.clientmanager.constants.Query;
+import com.example.clientmanager.constants.Column;
 
 @Getter
 @Setter

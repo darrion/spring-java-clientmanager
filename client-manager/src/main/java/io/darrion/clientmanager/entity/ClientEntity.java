@@ -1,10 +1,10 @@
-package io.darrion.clientmanager.entity;
+package com.example.clientmanager.entity;
 
 import javax.persistence.*;
 
-import io.darrion.clientmanager.constants.Query;
-import io.darrion.clientmanager.constants.Column;
-import io.darrion.clientmanager.constants.Name;
+import com.example.clientmanager.constants.Query;
+import com.example.clientmanager.constants.Column;
+import com.example.clientmanager.constants.Name;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

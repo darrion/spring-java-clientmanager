@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.constants;
+package com.example.clientmanager.constants;
 
 public class Name {
     

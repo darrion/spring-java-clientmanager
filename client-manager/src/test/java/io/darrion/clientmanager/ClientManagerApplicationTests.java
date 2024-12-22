@@ -1,11 +1,11 @@
-package io.darrion.clientmanager;
+package com.example.clientmanager;
 
-import io.darrion.clientmanager.repo.AdvisorRepository;
-import io.darrion.clientmanager.repo.ClientRepository;
-import io.darrion.clientmanager.repo.SpecializationRepository;
-import io.darrion.clientmanager.service.AdvisorService;
-import io.darrion.clientmanager.service.ClientService;
-import io.darrion.clientmanager.service.SpecializationService;
+import com.example.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.repo.ClientRepository;
+import com.example.clientmanager.repo.SpecializationRepository;
+import com.example.clientmanager.service.AdvisorService;
+import com.example.clientmanager.service.ClientService;
+import com.example.clientmanager.service.SpecializationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,11 +1,11 @@
-package io.darrion.clientmanager.config.factory;
+package com.example.clientmanager.config.factory;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.ClientEntity;
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.model.Client;
-import io.darrion.clientmanager.repo.AdvisorRepository;
-import io.darrion.clientmanager.repo.ClientRepository;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.model.Client;
+import com.example.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.repo.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

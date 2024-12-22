@@ -1,9 +1,9 @@
-package io.darrion.clientmanager.handler;
+package com.example.clientmanager.handler;
 
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
-import io.darrion.clientmanager.response.ApiException;
-import io.darrion.clientmanager.response.ErrorMessage;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
+import com.example.clientmanager.response.ApiException;
+import com.example.clientmanager.response.ErrorMessage;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

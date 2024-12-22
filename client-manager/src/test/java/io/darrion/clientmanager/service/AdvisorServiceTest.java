@@ -1,9 +1,9 @@
-package io.darrion.clientmanager.service;
+package com.example.clientmanager.service;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
-import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
+import com.example.clientmanager.model.Advisor;
+import com.example.clientmanager.repo.AdvisorRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

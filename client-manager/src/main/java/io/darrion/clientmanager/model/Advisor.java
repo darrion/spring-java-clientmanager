@@ -1,10 +1,10 @@
-package io.darrion.clientmanager.model;
+package com.example.clientmanager.model;
 
 import java.sql.Timestamp;
 
 import javax.validation.constraints.NotNull;
 
-import io.darrion.clientmanager.constants.Error;
+import com.example.clientmanager.constants.Error;
 
 import lombok.Getter;
 import lombok.Setter;

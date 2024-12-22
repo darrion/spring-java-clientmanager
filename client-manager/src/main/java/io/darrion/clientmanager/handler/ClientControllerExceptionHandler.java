@@ -1,7 +1,7 @@
-package io.darrion.clientmanager.handler;
+package com.example.clientmanager.handler;
 
-import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
-import io.darrion.clientmanager.response.ApiException;
+import com.example.clientmanager.exception.ClientEmailDuplicateException;
+import com.example.clientmanager.response.ApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

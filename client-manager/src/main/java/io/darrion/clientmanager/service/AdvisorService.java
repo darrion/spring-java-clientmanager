@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.service;
+package com.example.clientmanager.service;
 
 import java.util.List;
 
@@ -6,15 +6,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.ClientEntity;
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
-import io.darrion.clientmanager.exception.ClientDoesNotExistException;
-import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.model.Assignment;
-import io.darrion.clientmanager.repo.AdvisorRepository;
-import io.darrion.clientmanager.repo.ClientRepository;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
+import com.example.clientmanager.exception.ClientDoesNotExistException;
+import com.example.clientmanager.model.Advisor;
+import com.example.clientmanager.model.Assignment;
+import com.example.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.repo.ClientRepository;
 
 @Service
 public class AdvisorService {

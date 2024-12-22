@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.exception;
+package com.example.clientmanager.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

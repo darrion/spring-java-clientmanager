@@ -1,9 +1,9 @@
-package io.darrion.clientmanager.config.factory;
+package com.example.clientmanager.config.factory;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.SpecializationEntity;
-import io.darrion.clientmanager.model.Specialization;
-import io.darrion.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.SpecializationEntity;
+import com.example.clientmanager.model.Specialization;
+import com.example.clientmanager.repo.AdvisorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

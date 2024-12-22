@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.response;
+package com.example.clientmanager.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

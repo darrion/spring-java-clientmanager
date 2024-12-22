@@ -1,9 +1,9 @@
-package io.darrion.clientmanager.mapper;
+package com.example.clientmanager.mapper;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.ClientEntity;
-import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.model.Client;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.model.Advisor;
+import com.example.clientmanager.model.Client;
 
 public interface Mapper {
     

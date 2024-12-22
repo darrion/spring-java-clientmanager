@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.entity.composite;
+package com.example.clientmanager.entity.composite;
 
 import java.io.Serializable;
 

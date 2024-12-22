@@ -1,7 +1,7 @@
-package io.darrion.clientmanager.controller;
+package com.example.clientmanager.controller;
 
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.ClientEmailDuplicateException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.darrion.clientmanager.model.Client;
-import io.darrion.clientmanager.response.ApiException;
-import io.darrion.clientmanager.service.ClientService;
+import com.example.clientmanager.model.Client;
+import com.example.clientmanager.response.ApiException;
+import com.example.clientmanager.service.ClientService;
 
 @Validated
 @RestController

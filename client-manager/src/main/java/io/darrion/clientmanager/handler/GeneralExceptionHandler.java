@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.handler;
+package com.example.clientmanager.handler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import io.darrion.clientmanager.response.ApiException;
+import com.example.clientmanager.response.ApiException;
 
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;

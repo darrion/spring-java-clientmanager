@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.model;
+package com.example.clientmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

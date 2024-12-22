@@ -1,9 +1,9 @@
-package io.darrion.clientmanager.controller;
+package com.example.clientmanager.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.darrion.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.entity.ClientEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.AdvisorEmailDuplicateException;
-import io.darrion.clientmanager.exception.ClientDoesNotExistException;
-import io.darrion.clientmanager.model.Advisor;
-import io.darrion.clientmanager.model.Assignment;
-import io.darrion.clientmanager.response.ApiException;
-import io.darrion.clientmanager.service.AdvisorService;
-import io.darrion.clientmanager.service.ClientService;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
+import com.example.clientmanager.exception.ClientDoesNotExistException;
+import com.example.clientmanager.model.Advisor;
+import com.example.clientmanager.model.Assignment;
+import com.example.clientmanager.response.ApiException;
+import com.example.clientmanager.service.AdvisorService;
+import com.example.clientmanager.service.ClientService;
 
 @RestController
 @RequestMapping("/advisor")

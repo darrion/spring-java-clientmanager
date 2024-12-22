@@ -1,4 +1,4 @@
-package io.darrion.clientmanager;
+package com.example.clientmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

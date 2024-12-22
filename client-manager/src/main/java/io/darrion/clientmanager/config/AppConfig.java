@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.config;
+package com.example.clientmanager.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

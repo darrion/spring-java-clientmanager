@@ -1,4 +1,4 @@
-package io.darrion.clientmanager.entity;
+package com.example.clientmanager.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

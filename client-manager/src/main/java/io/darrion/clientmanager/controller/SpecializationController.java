@@ -1,6 +1,6 @@
-package io.darrion.clientmanager.controller;
+package com.example.clientmanager.controller;
 
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.darrion.clientmanager.entity.SpecializationEntity;
-import io.darrion.clientmanager.model.Specialization;
-import io.darrion.clientmanager.service.SpecializationService;
+import com.example.clientmanager.entity.SpecializationEntity;
+import com.example.clientmanager.model.Specialization;
+import com.example.clientmanager.service.SpecializationService;
 
 @RestController
 @RequestMapping("/advisor/specialization")

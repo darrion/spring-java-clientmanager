@@ -1,17 +1,17 @@
-package io.darrion.clientmanager.service;
+package com.example.clientmanager.service;
 
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.exception.ClientEmailDuplicateException;
-import io.darrion.clientmanager.config.factory.ClientFactory;
-import io.darrion.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.exception.ClientEmailDuplicateException;
+import com.example.clientmanager.config.factory.ClientFactory;
+import com.example.clientmanager.repo.AdvisorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import io.darrion.clientmanager.entity.ClientEntity;
-import io.darrion.clientmanager.model.Client;
-import io.darrion.clientmanager.repo.ClientRepository;
+import com.example.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.model.Client;
+import com.example.clientmanager.repo.ClientRepository;
 
 import javax.validation.Valid;
 

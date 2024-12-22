@@ -1,8 +1,8 @@
-package io.darrion.clientmanager.repo;
+package com.example.clientmanager.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.AdvisorEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

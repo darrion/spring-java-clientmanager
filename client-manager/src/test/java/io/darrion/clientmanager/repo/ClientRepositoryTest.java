@@ -1,7 +1,7 @@
-package io.darrion.clientmanager.repo;
+package com.example.clientmanager.repo;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.ClientEntity;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.ClientEntity;
 
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeAll;

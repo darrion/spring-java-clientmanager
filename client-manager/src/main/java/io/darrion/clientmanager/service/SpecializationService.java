@@ -1,16 +1,16 @@
-package io.darrion.clientmanager.service;
+package com.example.clientmanager.service;
 
-import io.darrion.clientmanager.exception.AdvisorDoesNotExistException;
-import io.darrion.clientmanager.config.factory.SpecializationFactory;
+import com.example.clientmanager.exception.AdvisorDoesNotExistException;
+import com.example.clientmanager.config.factory.SpecializationFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.darrion.clientmanager.entity.AdvisorEntity;
-import io.darrion.clientmanager.entity.SpecializationEntity;
-import io.darrion.clientmanager.model.Specialization;
-import io.darrion.clientmanager.repo.AdvisorRepository;
-import io.darrion.clientmanager.repo.SpecializationRepository;
+import com.example.clientmanager.entity.AdvisorEntity;
+import com.example.clientmanager.entity.SpecializationEntity;
+import com.example.clientmanager.model.Specialization;
+import com.example.clientmanager.repo.AdvisorRepository;
+import com.example.clientmanager.repo.SpecializationRepository;
 
 @Service
 public class SpecializationService {
