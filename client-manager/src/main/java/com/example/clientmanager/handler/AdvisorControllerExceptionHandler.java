@@ -3,7 +3,6 @@ package com.example.clientmanager.handler;
 import com.example.clientmanager.exception.AdvisorDoesNotExistException;
 import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
 import com.example.clientmanager.response.ApiException;
-import com.example.clientmanager.response.ErrorMessage;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

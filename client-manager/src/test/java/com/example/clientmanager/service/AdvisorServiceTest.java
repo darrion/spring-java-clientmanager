@@ -3,7 +3,6 @@ package com.example.clientmanager.service;
 import com.example.clientmanager.entity.AdvisorEntity;
 import com.example.clientmanager.exception.AdvisorEmailDuplicateException;
 import com.example.clientmanager.model.Advisor;
-import com.example.clientmanager.repo.AdvisorRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
